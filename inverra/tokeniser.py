@@ -1,3 +1,6 @@
+"""Utilities for turning raw text into normalized search tokens."""
+
+
 import re
 import string
 
@@ -10,8 +13,15 @@ def remove_punctuation(text: str) -> str:
 def split_tokens(text: str) -> list:
     return text.split()
 
+def stem(token: str) -> str:
+    for suffix in ["ing", "ed", "s"]:
+        if token.endswith(suffix) and len(token) > len(suffix) + 2:
+            return token[:-len(suffix)]
+    return token
+
 def tokenise(text: str) -> list:
     text = lowercase(text)
     text = remove_punctuation(text)
     tokens = split_tokens(text)
+    tokens = [stem(token) for token in tokens]
     return tokens

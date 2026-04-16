@@ -1,5 +1,5 @@
+from inverra.tokeniser import lowercase, remove_punctuation, split_tokens, tokenise, stem
 import pytest
-from inverra.tokeniser import lowercase, remove_punctuation, split_tokens, tokenise
 
 def test_lowercase_uppercase():
     assert lowercase("MESSI") == "messi"
@@ -40,11 +40,20 @@ def test_split_tokens_multiple_spaces():
 def test_split_tokens_empty():
     assert split_tokens("") == []
 
+def test_stem_ing():
+    assert stem("scoring") == "scor"
+
+def test_stem_ed():
+    assert stem("scored") == "scor"
+
+def test_stem_s():
+    assert stem("goals") == "goal"
+
 def test_tokenise_basic():
     assert tokenise("Mes que un club!!!") == ["mes", "que", "un", "club"]
 
 def test_tokenise_numbers():
-    assert tokenise("Messi has scored 900 goals") == ["messi", "has", "scored", "900", "goals"]
+    assert tokenise("Messi has scored 900 goals") == ["messi", "has", "scor", "900", "goal"]
 
 def test_tokenise_empty():
     assert tokenise("") == []
