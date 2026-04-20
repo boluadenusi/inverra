@@ -65,4 +65,4 @@ def test_tokenise_query_consistency():
     assert "fc" in query_tokens
     assert "barcelona" in doc_tokens
     assert "barcelona" in query_tokens
-    assert query_tokens == ["what", "is", "fc", "barcelona"]
+    assert query_tokens == ["what", "fc", "barcelona"]
