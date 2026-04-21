@@ -10,7 +10,7 @@ def compute_tf(term, doc_id):
 def compute_idf(term):
     total_docs = len(document_store)
     docs_containing_term = len(inverted_index[term])
-    return math.log(total_docs / (docs_containing_term + 1))  # Add 1 to avoid division by zero
+    return math.log(total_docs / (docs_containing_term))  # Add 1 to avoid division by zero
 
 def score(query_tokens, doc_id):
     total = 0.0
