@@ -1,4 +1,4 @@
-# Inverra
+# inverra
 
 A text search engine built from scratch in Python. 
 
